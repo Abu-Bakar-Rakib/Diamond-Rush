@@ -17,6 +17,9 @@ An authentic retro cave-exploration arcade puzzle game built with **React**, **H
 </div>
 
 ---
+<img width="1332" height="635" alt="image" src="https://github.com/user-attachments/assets/c3f9673f-d482-4079-825d-5b698ebd97ca" />
+<img width="1337" height="626" alt="image" src="https://github.com/user-attachments/assets/5baa5f7c-deb7-4848-8663-76792c12c781" />
+<img width="1319" height="636" alt="image" src="https://github.com/user-attachments/assets/a173e39d-21f4-4dcf-b402-529fe75ecfa7" />
 
 ## ✨ Key Features
 
