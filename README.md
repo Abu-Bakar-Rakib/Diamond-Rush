@@ -8,10 +8,11 @@
 ![Vite](https://img.shields.io/badge/Vite-7-646CFF?logo=vite&logoColor=white)
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-4-38B2AC?logo=tailwind-css&logoColor=white)
 ![Audio](https://img.shields.io/badge/Audio-Web_Audio_API-orange)
+![FPS](https://img.shields.io/badge/Performance-60_FPS-emerald)
 
 An authentic retro cave-exploration arcade puzzle game built with **React**, **HTML5 Canvas**, and **TypeScript**. Navigate treacherous underground chambers, dig through soil, gather precious gems, manipulate boulders with dynamic gravity physics, and unlock escape portals!
 
-[🎮 Features](#-key-features) • [🕹️ Controls](#-controls) • [⚙️ Physics & Mechanics](#-gameplay--physics) • [🚀 Getting Started](#-getting-started) • [📁 Project Structure](#-project-structure)
+[🎮 Features](#-key-features) • [🕹️ Controls](#-controls) • [⚙️ Physics & Mechanics](#-gameplay--physics) • [🗺️ Progression System](#-progression-system) • [🚀 Getting Started](#-getting-started) • [📁 Project Structure](#-project-structure)
 
 </div>
 
@@ -36,8 +37,9 @@ An authentic retro cave-exploration arcade puzzle game built with **React**, **H
 - **🔊 100% Procedural Chiptune Audio:**
   - Pure Web Audio API synthesis — zero external MP3/WAV assets required.
   - Custom sound effects for gem pickups, dirt digging, boulder pushes, portal unlocks, and deaths.
-- **⚡ High Performance & Zero Latency:**
-  - Rendered via optimized HTML5 2D Canvas at 60 FPS.
+- **⚡ High Performance & Zero Asset Dependencies:**
+  - Rendered via optimized HTML5 2D Canvas at a locked 60 FPS.
+  - Zero external image sprites or audio files — everything is dynamically drawn and synthesized in code.
   - Instant reset (<1s rewind) for seamless retry loops.
 
 ---
@@ -76,6 +78,20 @@ An authentic retro cave-exploration arcade puzzle game built with **React**, **H
 
 ---
 
+## 🗺️ Progression System
+
+1. **Sequential Unlocking:**
+   - Players start at **Stage 1** for each difficulty mode.
+   - Beating Stage 1 unlocks Stage 2, beating Stage 2 unlocks Stage 3, and so on up to Stage 5.
+   - Future stages remain locked until the prerequisite stage is cleared.
+2. **Automatic Browser Storage:**
+   - Progress is automatically saved into browser `localStorage`.
+   - Players can close their tab and resume their highest unlocked stage on return.
+3. **Stage Replayability:**
+   - Any previously cleared stage can be freely selected and replayed from the stage briefing screen.
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -105,7 +121,7 @@ Ensure you have [Node.js](https://nodejs.org/) (v18 or higher) installed on your
    ```bash
    npm run build
    ```
-   The self-contained production bundle will be generated in `dist/`.
+   The production-ready self-contained bundle will be generated in `dist/`.
 
 ---
 
@@ -113,27 +129,28 @@ Ensure you have [Node.js](https://nodejs.org/) (v18 or higher) installed on your
 
 ```text
 Diamond Rush/
-├── public/                 # Static assets
-├── src/
-│   ├── components/         # React UI & canvas components
-│   │   ├── GameCanvas.tsx  # Core 60 FPS HTML5 game canvas & render loop
-│   │   ├── Header.tsx      # Top branding bar with volume toggle
-│   │   ├── MainMenu.tsx    # Title screen with mode selection
-│   │   ├── ModeSelect.tsx  # Difficulty selection view
-│   │   ├── StartScreen.tsx # Stage briefing & sequential level progression
-│   │   └── VictoryModal.tsx# Victory celebration modal & stage completion
-│   ├── audio.ts            # Procedural Web Audio API sound synthesis
-│   ├── gameLogic.ts        # Pure functional game state & move execution engine
-│   ├── levels.ts           # Handcrafted grid layouts for 15 levels
-│   ├── storage.ts          # Browser localStorage progression persistence
-│   ├── types.ts            # TypeScript definitions for entities, grid & state
-│   ├── App.tsx             # Top-level screen coordinator
-│   ├── index.css           # Modern dark-mode Tailwind CSS styling
-│   └── main.tsx            # Application entry point
-├── package.json            # Project dependencies & scripts
-├── tsconfig.json           # TypeScript configuration
-├── vite.config.ts          # Vite build pipeline
-└── README.md               # Project documentation
+├── .gitignore               # Git exclusions (node_modules, dist, etc.)
+├── README.md                # Project documentation & manual
+├── index.html               # Main HTML5 entry point
+├── package.json             # Minimal dependencies (React 19, Lucide, Canvas-Confetti)
+├── tsconfig.json            # TypeScript compiler configuration
+├── vite.config.ts           # Vite build pipeline
+└── src/
+    ├── components/
+    │   ├── GameCanvas.tsx   # 60 FPS HTML5 game canvas, render loop & particle VFX
+    │   ├── Header.tsx       # Top bar with mute toggle
+    │   ├── MainMenu.tsx     # Title screen & difficulty entry
+    │   ├── ModeSelect.tsx   # Difficulty picker (Easy, Medium, Hard)
+    │   ├── StartScreen.tsx  # Stage selector (Stages 1–5) & mission briefing
+    │   └── VictoryModal.tsx # Stage completion celebration & confetti
+    ├── App.tsx              # Application state coordinator & view router
+    ├── audio.ts             # 100% procedural Web Audio API sound synthesizer
+    ├── gameLogic.ts         # Pure functional game state & move execution engine
+    ├── index.css            # Dark mode Tailwind CSS styling
+    ├── levels.ts            # Handcrafted grid layouts for 15 sequential levels
+    ├── main.tsx             # React DOM root initialization
+    ├── storage.ts           # Browser localStorage progression persistence
+    └── types.ts             # TypeScript definitions for entities, grid & state
 ```
 
 ---
