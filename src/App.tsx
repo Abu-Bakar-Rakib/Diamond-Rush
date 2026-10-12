@@ -5,7 +5,6 @@ import { MainMenu } from './components/MainMenu';
 import { ModeSelect } from './components/ModeSelect';
 import { StartScreen } from './components/StartScreen';
 import { GameCanvas } from './components/GameCanvas';
-import { HowToPlayModal } from './components/HowToPlayModal';
 import { VictoryModal } from './components/VictoryModal';
 import { sounds } from './audio';
 import { loadProgress, saveLevelCompleted, setSavedCurrentLevel, AllProgress } from './storage';
@@ -21,7 +20,6 @@ export default function App() {
   const [isMuted, setIsMuted] = useState<boolean>(sounds.muted);
 
   // Modals state
-  const [showHowToPlay, setShowHowToPlay] = useState<boolean>(false);
   const [victoryState, setVictoryState] = useState<GameState | null>(null);
 
   const handleToggleMute = () => {
@@ -75,7 +73,6 @@ export default function App() {
         levelNumber={levelNumber}
         isMuted={isMuted}
         onToggleMute={handleToggleMute}
-        onOpenHowToPlay={() => setShowHowToPlay(true)}
         onGoHome={() => {
           setVictoryState(null);
           setScreen('MENU');
@@ -87,7 +84,6 @@ export default function App() {
         {screen === 'MENU' && (
           <MainMenu
             onStartGame={() => setScreen('MODE_SELECT')}
-            onOpenHowToPlay={() => setShowHowToPlay(true)}
           />
         )}
 
@@ -127,7 +123,6 @@ export default function App() {
       </main>
 
       {/* Modals & Overlays */}
-      {showHowToPlay && <HowToPlayModal onClose={() => setShowHowToPlay(false)} />}
       {victoryState && (
         <VictoryModal
           state={victoryState}

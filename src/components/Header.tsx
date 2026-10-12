@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, VolumeX, HelpCircle, ArrowLeft } from 'lucide-react';
+import { Volume2, VolumeX, ArrowLeft } from 'lucide-react';
 import { sounds } from '../audio';
 import { ScreenState, GameMode } from '../types';
 import { LEVEL_METADATA } from '../levels';
@@ -10,7 +10,6 @@ interface HeaderProps {
   levelNumber?: number;
   isMuted: boolean;
   onToggleMute: () => void;
-  onOpenHowToPlay: () => void;
   onGoHome: () => void;
 }
 
@@ -20,7 +19,6 @@ export const Header: React.FC<HeaderProps> = ({
   levelNumber,
   isMuted,
   onToggleMute,
-  onOpenHowToPlay,
   onGoHome,
 }) => {
   const currentLevel = LEVEL_METADATA[mode];
@@ -81,20 +79,6 @@ export const Header: React.FC<HeaderProps> = ({
         >
           {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4 text-cyan-400" />}
         </button>
-
-        <button
-          onClick={() => {
-            sounds.playClick();
-            onOpenHowToPlay();
-          }}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900/90 hover:bg-zinc-800 text-zinc-300 hover:text-white text-xs font-semibold transition-colors"
-          title="Game Rules & Mechanics"
-        >
-          <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
-          <span className="hidden sm:inline">GUIDE</span>
-        </button>
-
-
       </div>
     </header>
   );

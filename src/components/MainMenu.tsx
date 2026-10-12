@@ -4,7 +4,6 @@ import { sounds } from '../audio';
 
 interface MainMenuProps {
   onStartGame: () => void;
-  onOpenHowToPlay?: () => void;
 }
 
 export const MainMenu: React.FC<MainMenuProps> = ({
