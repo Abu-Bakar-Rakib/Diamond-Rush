@@ -105,7 +105,7 @@ Ensure you have [Node.js](https://nodejs.org/) (v18 or higher) installed on your
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/<YOUR-USERNAME>/diamond-rush.git
+   git clone https://github.com/<Abu-Bakar-Rakib>/diamond-rush.git
    cd diamond-rush
    ```
 
